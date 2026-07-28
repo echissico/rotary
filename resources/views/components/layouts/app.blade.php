@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="sol-theme">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,17 +17,21 @@
         <link rel="stylesheet" href="/css/rc-main.css">
         <link rel="stylesheet" href="/css/enhancements.css">
         
-        <!-- Prevent FOUC: set theme before render -->
-        <script>
-            (function() {
-                var saved = localStorage.getItem('rc-theme');
-                var pref = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.setAttribute('data-theme', pref);
-            })();
-        </script>
-        
         <!-- Alpine.js for interactivity -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        
+        <style>
+            /* Force the background and text color immediately to prevent flash */
+            html.sol-theme {
+                background: #060b18;
+                color: #e2e8f0;
+            }
+            body {
+                background-color: var(--bg-primary) !important;
+                background-image: var(--bg-pattern) !important;
+                background-attachment: fixed !important;
+            }
+        </style>
     </head>
     <body>
         <x-header />
@@ -38,28 +42,15 @@
         
         <x-footer />
         
-        <!-- Theme toggle script -->
+        <!-- Scroll handler for sticky header -->
         <script>
-            function toggleTheme() {
-                var html = document.documentElement;
-                var current = html.getAttribute('data-theme');
-                var next = current === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', next);
-                localStorage.setItem('rc-theme', next);
-                updateThemeIcon(next);
-            }
-            
-            function updateThemeIcon(theme) {
-                var icon = document.getElementById('theme-icon');
-                if (icon) {
-                    icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+            document.addEventListener('scroll', function() {
+                var header = document.querySelector('header.site');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled-pill');
+                } else {
+                    header.classList.remove('scrolled-pill');
                 }
-            }
-            
-            // Set icon on load
-            document.addEventListener('DOMContentLoaded', function() {
-                var theme = document.documentElement.getAttribute('data-theme') || 'light';
-                updateThemeIcon(theme);
             });
         </script>
     </body>

@@ -1,149 +1,143 @@
 <x-layouts.app>
-    <div class="page-in">
-        <div class="layout-hero">
-            <div class="layout-hero-content">
-                <div class="pill-eyebrow">Rotary International Distrito 9400</div>
-                <h1>{!! nl2br(e(__('Pessoas de Ação, a Servir com Propósito'))) !!}</h1>
-                <p class="lead">{{ __('O Rotary Club of Maputo Metro é um clube vibrante de líderes, profissionais e voluntários dedicados, unidos pelo compromisso de criar mudanças positivas e duradouras em nossa comunidade.') }}</p>
-                <div class="layout-hero-ctas">
-                    <a class="btn btn-hero-primary" href="/get-involved">{{ __('Quero Envolver-me') }}</a>
-                    <a class="btn btn-hero-outline" href="/projects">{{ __('Conhecer Projetos') }}</a>
-                </div>
-            </div>
-            <div class="layout-hero-image">
-                <img src="https://www.rcmaputometro.com/images/gallery/photo-43.jpg" alt="Membros do Rotary Club of Maputo Metro" />
-            </div>
-        </div>
+    <div class="page-in sol-layout">
         
-        <div class="layout-stats-band">
-            <div class="layout-stat">
-                <div class="num">1.2M+</div>
-                <div class="label">{{ __('MEMBROS NO MUNDO') }}<br>{{ __('Uma rede global de impacto humanitário') }}</div>
-            </div>
-            <div class="layout-stat-divider"></div>
-            <div class="layout-stat">
-                <div class="num">2023</div>
-                <div class="label">{{ __('FUNDAÇÃO EM MAPUTO') }}<br>{{ __('Iniciando uma nova era de serviço local') }}</div>
-            </div>
-            <div class="layout-stat-divider"></div>
-            <div class="layout-stat">
-                <div class="num">6+</div>
-                <div class="label">{{ __('EVENTOS REALIZADOS') }}<br>{{ __('Projetos que já tocam vidas moçambicanas') }}</div>
-            </div>
-        </div>
-        
-        <!-- Projetos em destaque -->
-        <div class="section layout-featured-section">
-            <div class="layout-section-head">
-                <div>
-                    <div class="eyebrow-text">{{ __('EM DESTAQUE') }}</div>
-                    <h2>{{ __('Projetos que fazem a diferença') }}</h2>
-                </div>
-                <a class="btn-text-link" href="/projects">{{ __('Ver todos os projetos') }} <span>→</span></a>
-            </div>
-            
-            <div class="layout-featured-grid">
-                <!-- Left Feature Card -->
-                <div class="layout-feat-card-main">
-                    <img class="bg-img" src="https://www.rcmaputometro.com/images/events/wash-khongolote/05.jpg" alt="Projeto WASH" />
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <span class="pill-tag-yellow">{{ __('Água, Saneamento e Higiene') }}</span>
-                        <h3>{{ __('Projeto WASH — Escola Básica de Khongolote') }}</h3>
-                        <p>{{ __('Instalação de furo de água, sistemas de saneamento e educação em higiene para beneficiar diretamente centenas de alunos e a comunidade local.') }}</p>
-                        <a href="/projects/wash-khongolote" class="btn btn-white">{{ __('Ler História do Projeto') }}</a>
+        <!-- HERO SECTION (SOL Style: Typography focused, dark grid) -->
+        <div class="sol-hero-section">
+            <div class="sol-container sol-hero-grid">
+                <div class="sol-hero-content">
+                    <div class="sol-pill-eyebrow">
+                        <span class="dot"></span> DISTRITO 9400
                     </div>
+                    <h1>
+                        {!! nl2br(e(__('Pessoas de Ação.'))) !!}<br>
+                        <span class="sol-gold-text">{!! nl2br(e(__('Servir com Propósito.'))) !!}</span>
+                    </h1>
+                    <p class="sol-lead">
+                        {{ __('O Rotary Club of Maputo Metro é um clube vibrante de líderes, profissionais e voluntários dedicados, unidos pelo compromisso de criar mudanças positivas e duradouras em nossa comunidade.') }}
+                    </p>
+                    <div class="sol-hero-actions">
+                        <a href="/get-involved" class="btn-sol-primary">{{ __('Quero Envolver-me') }} <span>→</span></a>
+                        <a href="/projects" class="btn-sol-outline">{{ __('Conhecer Projetos') }}</a>
+                    </div>
+                </div>
+                <div class="sol-hero-image-wrapper">
+                    <img src="https://www.rcmaputometro.com/images/gallery/photo-43.jpg" alt="Membros do Rotary Club of Maputo Metro" class="sol-hero-img" />
+                    <div class="sol-hero-img-glow"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CLIENTS / TRUST BAND -->
+        <div class="sol-trust-section">
+            <div class="sol-container">
+                <div class="sol-trust-eyebrow">{{ __('UMA REDE GLOBAL') }}</div>
+                <h2>{{ __('O poder da nossa comunidade') }}</h2>
+                <div class="sol-trust-logos">
+                    <!-- Subtle text placeholders acting as logos for now -->
+                    <span>Rotary International</span>
+                    <span>Distrito 9400</span>
+                    <span>Maputo Metro</span>
+                    <span>Pessoas de Ação</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BENTO GRID (The SOL Advantage Style) -->
+        <div class="sol-bento-section">
+            <div class="sol-container">
+                <div class="sol-bento-header">
+                    <div class="sol-trust-eyebrow">{{ __('A NOSSA FORÇA') }}</div>
+                    <h2>{{ __('O impacto do nosso clube em Moçambique e no mundo.') }}</h2>
                 </div>
                 
-                <!-- Right Info Card -->
-                <div class="layout-feat-card-side">
-                    <div class="icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <div class="sol-bento-grid">
+                    
+                    <!-- Card 1: Membros (Growth chart style) -->
+                    <div class="sol-bento-card bento-large">
+                        <div class="bento-inner">
+                            <div class="bento-top">
+                                <div class="bento-icon">↗</div>
+                                <span>{{ __('Rede Global') }}</span>
+                            </div>
+                            <div class="bento-chart">
+                                <!-- Abstract curved line simulating growth -->
+                                <svg viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0 80 Q 100 20, 200 60 T 400 10" fill="none" stroke="var(--sol-gold)" stroke-width="3"/></svg>
+                            </div>
+                            <div class="bento-bottom">
+                                <div class="bento-stat">1.2M+</div>
+                                <h3>{{ __('MEMBROS NO MUNDO') }}</h3>
+                                <p>{{ __('Uma rede global de impacto humanitário, dedicados a resolver os problemas mais prementes do mundo.') }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3>{{ __('Impacto Sustentável') }}</h3>
-                    <p>{{ __('Nossos projetos não são apenas doações; são investimentos em infraestrutura e educação que capacitam a comunidade a prosperar por conta própria a longo prazo.') }}</p>
-                    <div class="bottom-stat">
-                        <div class="stat-circle">500+</div>
-                        <div class="stat-text">{!! __('Vidas impactadas em<br>Khongolote') !!}</div>
+                    
+                    <!-- Card 2: Fundação (Timeline style) -->
+                    <div class="sol-bento-card">
+                        <div class="bento-inner">
+                            <div class="bento-top">
+                                <div class="bento-icon">⏱</div>
+                                <span>{{ __('Histórico') }}</span>
+                            </div>
+                            <div class="bento-timeline">
+                                <div class="tl-item"><span class="tl-dot"></span> 2023 - {{ __('Fundação do clube') }}</div>
+                                <div class="tl-item"><span class="tl-dot"></span> 2024 - {{ __('Primeiros projetos') }}</div>
+                                <div class="tl-item"><span class="tl-dot active"></span> {{ date('Y') }} - {{ __('Expansão de impacto') }}</div>
+                            </div>
+                            <div class="bento-bottom mt-auto">
+                                <div class="bento-stat">2023</div>
+                                <h3>{{ __('FUNDAÇÃO EM MAPUTO') }}</h3>
+                                <p>{{ __('Iniciando uma nova era de serviço local.') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3: WASH Project (Image background style) -->
+                    <div class="sol-bento-card bento-large has-image">
+                        <img class="bento-bg" src="https://www.rcmaputometro.com/images/events/wash-khongolote/05.jpg" alt="Projeto WASH" />
+                        <div class="bento-overlay"></div>
+                        <div class="bento-inner relative z-10">
+                            <div class="bento-top">
+                                <span class="sol-pill-eyebrow small">{{ __('EM DESTAQUE') }}</span>
+                            </div>
+                            <div class="bento-bottom mt-auto">
+                                <h3>{{ __('Projeto WASH — Khongolote') }}</h3>
+                                <p>{{ __('Instalação de furo de água, sistemas de saneamento e educação em higiene para beneficiar centenas de alunos.') }}</p>
+                                <a href="/projects/wash-khongolote" class="btn-text-gold mt-4">{{ __('Ler História do Projeto') }} <span>→</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4: Eventos -->
+                    <div class="sol-bento-card">
+                        <div class="bento-inner">
+                            <div class="bento-top">
+                                <div class="bento-icon">⚡</div>
+                                <span>{{ __('Ação Constante') }}</span>
+                            </div>
+                            <div class="bento-bottom mt-auto">
+                                <div class="bento-stat">6+</div>
+                                <h3>{{ __('EVENTOS REALIZADOS') }}</h3>
+                                <p>{{ __('Projetos que já tocam vidas moçambicanas através de ação direta.') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA SECTION -->
+        <div class="sol-cta-section">
+            <div class="sol-container">
+                <div class="sol-cta-box">
+                    <div class="cta-content">
+                        <h2>{{ __('Junte-se a nós') }}</h2>
+                        <p>{{ __('Quer pretenda servir a sua comunidade, colaborar em projetos de impacto, ou apoiar a nossa missão através de parcerias ou doações, será muito bem-vindo(a). Juntos, podemos construir amanhãs melhores.') }}</p>
+                        <a class="btn-sol-primary mt-6" href="/get-involved">{{ __('Quero Envolver-me') }} <span>→</span></a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- CTA global -->
-        <div class="section layout-cta-section">
-            <div class="layout-cta-box">
-                <div class="circles-bg">
-                    <div class="circle c1"></div>
-                    <div class="circle c2"></div>
-                    <div class="circle c3"></div>
-                </div>
-                <div class="content">
-                    <h3>{{ __('Junte-se a nós') }}</h3>
-                    <p>{{ __('Quer pretenda servir a sua comunidade, colaborar em projetos de impacto, ou apoiar a nossa missão através de parcerias ou doações, será muito bem-vindo(a). Juntos, podemos construir amanhãs melhores.') }}</p>
-                </div>
-                <div class="action">
-                    <a class="btn btn-yellow-large" href="/get-involved">{{ __('Quero Envolver-me') }}</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Últimos eventos -->
-        <div class="section layout-events-section">
-            <div class="layout-section-head">
-                <div>
-                    <div class="eyebrow-text">{{ __('ATIVIDADE RECENTE') }}</div>
-                    <h2>{{ __('Últimos eventos do clube') }}</h2>
-                </div>
-                <a class="btn btn-outline-gray" href="/events">{{ __('Ver todos os eventos') }}</a>
-            </div>
-            
-            <div class="layout-events-list">
-                <div class="layout-event-card">
-                    <div class="media">
-                        <img src="https://www.rcmaputometro.com/images/events/doacao-alimentos/02.jpg" alt="Doação de Alimentos" />
-                        <div class="date-box">
-                            <span class="d">25</span>
-                            <span class="m">ABR</span>
-                            <span class="y">2026</span>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <h3>{{ __('Doação de Alimentos, Roupas e Cosméticos') }}</h3>
-                        <p class="location">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            {{ __('Dom Orione Maputo Centre — 10h00 às 13h00') }}
-                        </p>
-                        <div class="actions">
-                            <a href="#" class="btn-action"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> {{ __('Ver local no mapa') }}</a>
-                            <a href="#" class="btn-action"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> {{ __('Ver fotos (8)') }}</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="layout-event-card">
-                    <div class="media">
-                        <img src="https://www.rcmaputometro.com/images/events/dia-da-crianca/01.jpg" alt="Dia da Criança" />
-                        <div class="date-box">
-                            <span class="d">01</span>
-                            <span class="m">JUN</span>
-                            <span class="y">2026</span>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <h3>{{ __('Dia da Criança — "A Minha História Tem Cores"') }}</h3>
-                        <p class="desc">{{ __('Pintura, palhaço, danças culturais, exposição de arte infantil e leilão solidário para as crianças do centro Dom Orione.') }}</p>
-                        <p class="location">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            {{ __('Zimpeto, Maputo — 10h00') }}
-                        </p>
-                        <div class="actions">
-                            <a href="#" class="btn-action"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> {{ __('Ver local no mapa') }}</a>
-                            <a href="#" class="btn-action"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg> {{ __('Ver fotos (8)') }}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </x-layouts.app>

@@ -22,9 +22,7 @@
             <a href="{{ route('lang.switch', 'en') }}" class="{{ app()->getLocale() === 'en' ? 'active' : '' }}" style="text-decoration:none;padding:4px 8px;font-size:12px;font-weight:600;border-radius:4px;display:inline-block">EN</a>
             <a href="{{ route('lang.switch', 'pt') }}" class="{{ app()->getLocale() === 'pt' ? 'active' : '' }}" style="text-decoration:none;padding:4px 8px;font-size:12px;font-weight:600;border-radius:4px;display:inline-block">PT</a>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar modo escuro/claro" title="Alternar tema">
-            <span id="theme-icon">🌙</span>
-        </button>
+
         <button class="burger" :class="{ 'open': open }" @click="open = !open" aria-label="Abrir menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>

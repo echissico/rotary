@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,14 +9,27 @@
         
         <link rel="icon" href="/favicon.ico" sizes="any">
         
-        <!-- Site CSS -->
-        <link rel="stylesheet" href="/css/rc.css">
-        <link rel="stylesheet" href="/css/rc-main.css">
+        <!-- Google Fonts preconnect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         
-        <!-- Laravel Vite -->
-        <!-- Removed Vite as it fails to build on Node v16. Using static CSS instead. -->
+        <!-- Site CSS -->
+        <link rel="stylesheet" href="/css/rc-main.css">
+        <link rel="stylesheet" href="/css/enhancements.css">
+        
+        <!-- Prevent FOUC: set theme before render -->
+        <script>
+            (function() {
+                var saved = localStorage.getItem('rc-theme');
+                var pref = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', pref);
+            })();
+        </script>
+        
+        <!-- Alpine.js for interactivity -->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
-    <body class="__variable_7d7e1d __variable_8b3a0b">
+    <body>
         <x-header />
         
         <main>
@@ -24,5 +37,30 @@
         </main>
         
         <x-footer />
+        
+        <!-- Theme toggle script -->
+        <script>
+            function toggleTheme() {
+                var html = document.documentElement;
+                var current = html.getAttribute('data-theme');
+                var next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('rc-theme', next);
+                updateThemeIcon(next);
+            }
+            
+            function updateThemeIcon(theme) {
+                var icon = document.getElementById('theme-icon');
+                if (icon) {
+                    icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+                }
+            }
+            
+            // Set icon on load
+            document.addEventListener('DOMContentLoaded', function() {
+                var theme = document.documentElement.getAttribute('data-theme') || 'light';
+                updateThemeIcon(theme);
+            });
+        </script>
     </body>
 </html>

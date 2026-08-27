@@ -5,7 +5,7 @@ set -e
 PORT="${PORT:-8000}"
 export PORT
 
-echo "==> Subtituting PORT (${PORT}) in Nginx configuration..."
+echo "==> Substituting PORT (${PORT}) in Nginx configuration..."
 if command -v envsubst > /dev/null 2>&1; then
     envsubst '${PORT}' < /etc/nginx/templates/default.conf.template > /etc/nginx/http.d/default.conf
 else
@@ -22,6 +22,20 @@ mkdir -p /var/www/html/storage/framework/cache/data \
 
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Verifica se APP_KEY está definida
+if [ -z "${APP_KEY}" ]; then
+    echo "==> WARNING: APP_KEY environment variable is missing!"
+    if [ ! -f /var/www/html/.env ]; then
+        if [ -f /var/www/html/.env.example ]; then
+            cp /var/www/html/.env.example /var/www/html/.env
+        else
+            touch /var/www/html/.env
+        fi
+    fi
+    echo "==> Generating temporary APP_KEY for runtime..."
+    php artisan key:generate --force
+fi
 
 # Se estiver usando SQLite e o arquivo não existir
 if [ "${DB_CONNECTION}" = "sqlite" ]; then
@@ -40,18 +54,18 @@ if [ ! -L /var/www/html/public/storage ]; then
     php artisan storage:link --no-interaction || true
 fi
 
+# Executa migrações se habilitado antes de cachear
+if [ "${RUN_MIGRATIONS:-true}" = "true" ]; then
+    echo "==> Running database migrations..."
+    php artisan migrate --force --no-interaction || echo "==> Warning: Database migration failed. Check database connection settings."
+fi
+
 # Cache de produção
 if [ "${APP_ENV}" = "production" ]; then
     echo "==> Caching configuration, routes, and views..."
     php artisan config:cache
     php artisan route:cache
     php artisan view:cache
-fi
-
-# Executa migrações se habilitado (padrão true em produção se configurado)
-if [ "${RUN_MIGRATIONS:-true}" = "true" ]; then
-    echo "==> Running database migrations..."
-    php artisan migrate --force --no-interaction
 fi
 
 echo "==> Starting PHP-FPM..."

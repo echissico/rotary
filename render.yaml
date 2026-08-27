@@ -5,7 +5,7 @@ services:
     plan: free
     region: oregon
     dockerfilePath: ./Dockerfile
-    healthCheckPath: /
+    healthCheckPath: /up
     envVars:
       - key: APP_ENV
         value: production
@@ -37,6 +37,8 @@ services:
         fromDatabase:
           name: rotary-db
           property: password
+      - key: DB_SSLMODE
+        value: prefer
       - key: LOG_CHANNEL
         value: stderr
       - key: SESSION_DRIVER

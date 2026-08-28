@@ -20,8 +20,13 @@ mkdir -p /var/www/html/storage/framework/cache/data \
          /var/www/html/storage/logs \
          /var/www/html/bootstrap/cache
 
+# Ensure laravel.log exists and is writable by www-data (php-fpm user)
+touch /var/www/html/storage/logs/laravel.log
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Clear any stale cached config from a previous deploy so Render env vars take effect
+php artisan config:clear --no-interaction || true
 
 # Verifica se APP_KEY está definida
 if [ -z "${APP_KEY}" ]; then

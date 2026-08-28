@@ -92,6 +92,9 @@ COPY docker/nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+# Copia configuração do pool PHP-FPM (clear_env=no para herdar env vars do Render)
+COPY docker/php-fpm-pool.conf /usr/local/etc/php-fpm.d/www.conf
+
 # Ajusta permissões de arquivos
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache

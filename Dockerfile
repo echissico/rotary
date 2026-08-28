@@ -50,25 +50,25 @@ RUN apk add --no-cache \
 # Instala e habilita extensões do PHP necessárias para o Laravel
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) \
-        pdo \
-        pdo_mysql \
-        pdo_pgsql \
-        pdo_sqlite \
-        bcmath \
-        opcache \
-        zip \
-        gd \
-        intl \
-        mbstring
+    pdo \
+    pdo_mysql \
+    pdo_pgsql \
+    pdo_sqlite \
+    bcmath \
+    opcache \
+    zip \
+    gd \
+    intl \
+    mbstring
 
 # Otimizações de produção no PHP e Opcache
 RUN { \
-        echo 'opcache.memory_consumption=128'; \
-        echo 'opcache.interned_strings_buffer=8'; \
-        echo 'opcache.max_accelerated_files=10000'; \
-        echo 'opcache.revalidate_freq=2'; \
-        echo 'opcache.fast_shutdown=1'; \
-        echo 'opcache.enable_cli=1'; \
+    echo 'opcache.memory_consumption=128'; \
+    echo 'opcache.interned_strings_buffer=8'; \
+    echo 'opcache.max_accelerated_files=10000'; \
+    echo 'opcache.revalidate_freq=2'; \
+    echo 'opcache.fast_shutdown=1'; \
+    echo 'opcache.enable_cli=1'; \
     } > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 WORKDIR /var/www/html
@@ -92,7 +92,7 @@ COPY docker/nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Copia configuração do pool PHP-FPM (clear_env=no para herdar env vars do Render)
+# Copia configuração do pool PHP-FPM (clear_env=no para herdar env vars do container)
 COPY docker/php-fpm-pool.conf /usr/local/etc/php-fpm.d/www.conf
 
 # Ajusta permissões de arquivos
